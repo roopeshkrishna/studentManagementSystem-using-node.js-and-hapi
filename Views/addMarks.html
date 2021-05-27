@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script>
+  
+        function validateForm(){
+      var name=document.forms["form"]["name"].value
+      if(name== "")
+      {
+          var not_name=document.getElementById("not_name")
+          not_name.style.display="block";
+          return false;
+      }
+      var sub=document.forms["form"]["subject1"].value
+      if(sub== "")
+      {
+          var not_name=document.getElementById("not_sub1")
+          not_name.style.display="block";
+          return false;
+      }
+      var sub=document.forms["form"]["subject2"].value
+      if(sub== "")
+      {
+          var not_name=document.getElementById("not_sub2")
+          not_name.style.display="block";
+          return false;
+      }
+      var sub=document.forms["form"]["subject3"].value
+      if(sub== "")
+      {
+          var not_name=document.getElementById("not_sub3")
+          not_name.style.display="block";
+          return false;
+      }
+      var sub=document.forms["form"]["subject4"].value
+      if(sub== "")
+      {
+          var not_name=document.getElementById("not_sub4")
+          not_name.style.display="block";
+          return false;
+      }
+  }
+
+      </script>
+    
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                    <div class="container-md">
+                      <a class="navbar-brand" >Add And View the Mark</a>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col md-6">
+
+                    <form  action="/submitMark" method="POST" name="form"  class="" style="margin-left:250px;width: 500px;">
+                        <label style="margin-left: 2000px; margin-top: 50px;">Add Marks</label>
+                        <div>
+                            <select name="studentId" class="form-select" aria-label="Default select example">
+                                <option  selected>Name</option>
+                               
+                                {{#each data}}
+                                <option  value="{{this._id}}">{{this.name}}</option>
+                             
+                                {{/each}}
+                              </select>
+                              <label id="not_name" style="display: none;">Name Cannot be empty</label>
+                        </div>
+                        <div></div>
+                        <div>
+                            <select name="subjectId" class="form-select mt-2" aria-label="Default select example">
+                                <option selected> subject</option>
+                                
+                                {{#each sub}}
+                                <option value="{{this._id}}" >{{this.subject}}</option>
+                             
+                                {{/each}}
+                              </select>
+                        </div>
+                        
+                        <div> <input type="text" name="mark" class="form-control mt-1" placeholder="mark"></div>
+                        <label id="not_sub1" style="display: none;">mark Cannot be empty</label>
+                       
+                          <input type="submit" value="submit" style=" width: 500px;" class="btn btn-primary mt-3 ">  
+                      </form>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        
+        
+        <table class="table mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+       
+              </tr>
+            </thead>
+            <tbody>
+                {{#each value}}
+              <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.subject}}  </td>
+               
+              </tr>
+              <tr>
+                <td></td>
+                <td>{{this.mark}}  </td>
+               
+              </tr>
+              {{/each}}
+            </tbody>
+        </table>
+        
+    </section>
+    
+    
+
+    <footer>
+        <div class="bg-primary mt-5" style="height: 70px; width: 100%;">
+
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
